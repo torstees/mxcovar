@@ -17,6 +17,13 @@ def ParseArgs(args=None):
     
     args = parser.parse_args()
     
+    population_ids = []
+    for line in args.pop:
+        # Catch IID, FID, etc
+        if line[1:3].lower() != 'id':
+            population_ids.append(line.strip().split()[0])
+
+    print(f"Total IDs: {len(population_ids)}")
     print(args)
     
 ParseArgs()
